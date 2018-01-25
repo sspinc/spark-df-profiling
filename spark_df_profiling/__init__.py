@@ -23,6 +23,9 @@ class ProfileReport(object):
 
         self.description_set = description_set
 
+    def render_static(self):
+        return template('wrapper').render(content=self.html)
+
     def render_standalone(self, mode="databricks", utils=None):
         if mode != "databricks":
             raise NotImplementedError("Only databricks mode is supported for now")
@@ -73,6 +76,3 @@ class ProfileReport(object):
 
     def __str__(self):
         return "Output written to file " + str(self.file.name)
-
-
-
